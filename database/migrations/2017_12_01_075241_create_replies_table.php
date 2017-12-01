@@ -17,6 +17,7 @@ class CreateRepliesTable extends Migration
             $table->increments('id');
             $table->integer('thread_id');
             $table->integer('user_id');
+            $table->text('body');
             $table->timestamps();
             $table->softDeletes();
         });
