@@ -35,4 +35,13 @@ class CreateThreadsTest extends TestCase
              ->assertSee($thread->title)
              ->assertSee($thread->body);
      }
+
+     /** @test */
+     function guest_cannot_see_the_create_thread_page()
+     {
+         $this->expectException('Illuminate\Auth\AuthenticationException');
+
+         $this->get('/threads/create')
+             ->assertSee(redirect('login'));
+     }
 }
