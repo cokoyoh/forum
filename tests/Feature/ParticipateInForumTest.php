@@ -21,7 +21,7 @@ class ParticipateInForumTest extends TestCase
 
         $reply = factory(Reply::class)->create();
 
-        $this->post( $thread->path() . '/replies', $reply->toArray());
+        $this->post( 'threads/some-channel/1/replies', []);
     }
 
      /** @test */
