@@ -38,6 +38,8 @@
                     <ul class="nav navbar-nav">
                         &nbsp; <li><a href="/threads">All Threads</a></li>
 
+                        <li><a href = "/threads/create">New Thread</a></li>
+
                         <li class="dropdown">
                             <a class="ropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">Channel <span class="caret"></span> </a>
                             <ul class="dropdown-menu">
