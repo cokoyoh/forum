@@ -22,7 +22,6 @@ Route::get('/threads/{channel}', 'ThreadsController@index');
 
 Route::post('/threads', 'ThreadsController@store');
 
-Route::post('/threads/{channel}/{thread}/replies', 'RepliesController@store');
 
 
 //Favourites routes
@@ -32,9 +31,15 @@ Route::delete('/replies/{reply}/favourites', 'FavouritesController@destroy');
 
 
 //Replies routes
+Route::get('/threads/{channel}/{thread}/replies', 'RepliesController@index');
+
+Route::post('/threads/{channel}/{thread}/replies', 'RepliesController@store');
+
 Route::delete('/replies/{reply}', 'RepliesController@destroy');
 
 Route::patch('/replies/{reply}', 'RepliesController@update');
 
+
+//Profile routes
 Route::get('/profiles/{user}', 'ProfilesController@show')->name('profile');
 
