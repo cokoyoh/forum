@@ -43453,6 +43453,9 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Favourite_vue__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Favourite_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Favourite_vue__);
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['attributes'],
@@ -43462,6 +43465,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             editing: false,
             body: this.attributes.body
         };
+    },
+
+
+    components: {
+        'favourites': __WEBPACK_IMPORTED_MODULE_0__Favourite_vue___default.a
     },
 
     methods: {
@@ -43489,6 +43497,152 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 52 */,
+/* 53 */,
+/* 54 */,
+/* 55 */,
+/* 56 */,
+/* 57 */,
+/* 58 */,
+/* 59 */,
+/* 60 */,
+/* 61 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(11)
+/* script */
+var __vue_script__ = __webpack_require__(62)
+/* template */
+var __vue_template__ = __webpack_require__(63)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/Favourite.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4c7ce402", Component.options)
+  } else {
+    hotAPI.reload("data-v-4c7ce402", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 62 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['reply'],
+
+    data: function data() {
+        return {
+            favouritesCount: this.reply.favouritesCount,
+            isFavourited: this.reply.isFavourited
+        };
+    },
+
+
+    computed: {
+        classes: function classes() {
+            return ['btn', this.isFavourited ? 'btn-primary' : 'btn-default'];
+        },
+        endpoint: function endpoint() {
+            return '/replies/' + this.reply.id + '/favourites';
+        }
+    },
+
+    methods: {
+        toggle: function toggle() {
+            return this.isFavourited ? this.destroy() : this.create();
+        },
+        create: function create() {
+            axios.post(this.endpoint);
+
+            this.isFavourited = true;
+
+            this.favouritesCount++;
+        },
+        destroy: function destroy() {
+            axios.delete(this.endpoint);
+
+            this.isFavourited = false;
+
+            this.favouritesCount--;
+        }
+    }
+});
+
+/***/ }),
+/* 63 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "button",
+      {
+        class: _vm.classes,
+        attrs: { type: "submit" },
+        on: { click: _vm.toggle }
+      },
+      [
+        _c("span", { staticClass: "glyphicon glyphicon-heart" }),
+        _vm._v(" "),
+        _c("span", { domProps: { textContent: _vm._s(_vm.favouritesCount) } })
+      ]
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-4c7ce402", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

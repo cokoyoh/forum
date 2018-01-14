@@ -25,9 +25,13 @@ Route::post('/threads', 'ThreadsController@store');
 Route::post('/threads/{channel}/{thread}/replies', 'RepliesController@store');
 
 
-//Relies routes
+//Favourites routes
 Route::post('/replies/{reply}/favourites', 'FavouritesController@store');
 
+Route::delete('/replies/{reply}/favourites', 'FavouritesController@destroy');
+
+
+//Replies routes
 Route::delete('/replies/{reply}', 'RepliesController@destroy');
 
 Route::patch('/replies/{reply}', 'RepliesController@update');

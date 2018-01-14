@@ -7,12 +7,11 @@
                     said {{$reply->created_at->diffForHumans()}}...
                 </h5>
                 <div>
-                    <form action = "/replies/{!! $reply->id !!}/favourites" method="post">
-                        {!! csrf_field() !!}
-                        <button type="submit" class="btn btn-default"{!! $reply->isFavourited() ? 'disabled' : ''!!} >
-                            {!! $reply->favourites_count !!} {!! str_plural('Favourite', $reply->favourites_count) !!}
-                        </button>
-                    </form>
+                    <favourites :reply="{{$reply }}"></favourites>
+                    {{--<form action = "/replies/{!! $reply->id !!}/favourites" method="post">--}}
+                        {{--{!! csrf_field() !!}--}}
+
+                    {{--</form>--}}
                 </div>
             </div>
         </div>

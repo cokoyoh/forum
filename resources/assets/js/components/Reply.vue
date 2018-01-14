@@ -1,4 +1,5 @@
 <script>
+    import Favourites from './Favourite.vue'
     export default {
         props: ['attributes'],
 
@@ -8,6 +9,11 @@
                 body: this.attributes.body
             };
         },
+
+        components: {
+          'favourites' : Favourites
+        },
+
         methods: {
             update() {
                 axios.patch('/replies/' + this.attributes.id, {body: this.body});
