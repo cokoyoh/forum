@@ -25,7 +25,7 @@ class FavouritesTest extends TestCase
 
         $reply =  create(Reply::class);
 
-        $this->post( $reply->path() . '/favourites');
+        $this->post("replies/{$reply->id}/favourites");
 
         $this->assertCount(1, $reply->favourites);
     }
@@ -39,9 +39,9 @@ class FavouritesTest extends TestCase
 
         try
         {
-            $this->post( $reply->path() . '/favourites');
+            $this->post("replies/{$reply->id}/favourites");
 
-            $this->post( $reply->path() . '/favourites');
+            $this->post("replies/{$reply->id}/favourites");
         }
         catch (\Exception $exception)
         {
