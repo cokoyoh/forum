@@ -6,13 +6,11 @@
                     <a href = "{!! route('profile', $reply->owner) !!}">{{$reply->owner->name}}</a>
                     said {{$reply->created_at->diffForHumans()}}...
                 </h5>
-                <div>
-                    <favourites :reply="{{$reply }}"></favourites>
-                    {{--<form action = "/replies/{!! $reply->id !!}/favourites" method="post">--}}
-                        {{--{!! csrf_field() !!}--}}
-
-                    {{--</form>--}}
-                </div>
+               @if(Auth::check())
+                    <div>
+                        <favourites :reply="{{$reply }}"></favourites>
+                    </div>
+               @endif
             </div>
         </div>
         <div class = "panel-body">
