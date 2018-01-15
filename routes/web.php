@@ -23,6 +23,12 @@ Route::get('/threads/{channel}', 'ThreadsController@index');
 Route::post('/threads', 'ThreadsController@store');
 
 
+//Subscriptions
+Route::post('/threads/{channel}/{thread}/subscribe', 'ThreadSubscriptionsController@store');
+
+Route::delete('/threads/{channel}/{thread}/subscribe', 'ThreadSubscriptionsController@destroy');
+
+
 
 //Favourites routes
 Route::post('/replies/{reply}/favourites', 'FavouritesController@store');
