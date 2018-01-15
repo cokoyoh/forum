@@ -1,5 +1,13 @@
+import Vue from 'vue';
 
 window._ = require('lodash');
+
+
+window.events = new Vue();
+
+window.flash = function (message) {
+    window.events.$emit('flash', message);
+};
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
