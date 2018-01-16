@@ -104,4 +104,21 @@ class ParticipateInForumTest extends TestCase
             ->assertStatus(200); //in forum this status code is 403;
 
     }
+
+    /** @test */
+    function replies_that_contain_spam_may_not_be_created()
+    {
+        $this->signIn();
+
+        $thread =  create(Thread::class);
+
+        $reply =  make(Reply::class, [
+            'body' => 'Yahoo Customer Support',
+        ]);
+
+        $this->expectException(\Exception::class);
+
+        $this->post( $thread->path() . '/replies', $reply->toArray());
+
+    }
 }
