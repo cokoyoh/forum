@@ -8,6 +8,8 @@ class Spam
     {
          $this->detectInvalidKeyWords($body);
 
+        $this->detectKeyHeldDown($body);
+
          return false;
     }
 
@@ -23,6 +25,14 @@ class Spam
             {
                 throw new \Exception('Your reply contains spam');
             }
+        }
+    }
+
+    protected function detectKeyHeldDown($body)
+    {
+        if(preg_match('/(.)\\1{4,}/', $body))
+        {
+            throw new \Exception('Your reply contains spam');
         }
     }
 }
