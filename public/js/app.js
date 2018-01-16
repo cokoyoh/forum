@@ -61090,6 +61090,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -61101,6 +61104,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         axios.get("/profiles/" + window.App.user.name + "/notifications").then(function (response) {
             return _this.notifications = response.data;
         });
+    },
+
+    methods: {
+        // "/profiles/" . $user->name ."/notifications/{$notificationId}"
+        markAsRead: function markAsRead(notification) {
+            axios.delete('/profiles/' + window.App.user.name + '/notifications/' + notification.id);
+        }
     }
 });
 
@@ -61121,7 +61131,15 @@ var render = function() {
           { staticClass: "dropdown-menu" },
           _vm._l(_vm.notifications, function(notification) {
             return _c("li", [
-              _c("a", { attrs: { href: "#" } }, [_vm._v("Foobar")])
+              _c("a", {
+                attrs: { href: notification.data.link },
+                domProps: { textContent: _vm._s(notification.data.message) },
+                on: {
+                  click: function($event) {
+                    _vm.markAsRead(notification)
+                  }
+                }
+              })
             ])
           })
         )
