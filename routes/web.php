@@ -49,3 +49,7 @@ Route::patch('/replies/{reply}', 'RepliesController@update');
 //Profile routes
 Route::get('/profiles/{user}', 'ProfilesController@show')->name('profile');
 
+Route::delete('/profiles/{user}/notifications/{notification}', 'UserNotificationsController@destroy');
+
+Route::get('/profiles/{user}/notifications', 'UserNotificationsController@index');
+
